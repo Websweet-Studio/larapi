@@ -1,13 +1,14 @@
 {
-    "private": true,
-    "type": "module",
+    "name": "larapi",
+    "version": "1.0.1",
+    "description": "Backend Aplikasi Notaris",
+    "main": "index.js",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "build": "node src/script.js"
     },
-    "devDependencies": {
-        "axios": "^1.7.4",
-        "laravel-vite-plugin": "^1.0",
-        "vite": "^5.0"
+    "dependencies": {
+        "archiver": "^5.3.1",
+        "fs": "0.0.1-security",
+        "tailwindcss": "^4.1.13"
     }
 }

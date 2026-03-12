@@ -6,21 +6,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasApiTokens;
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
+     *             $table->id();
      */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'avatar',
+        'phone',
+        'address',
+        'is_admin',
+        'email_notifications',
     ];
 
     /**
@@ -43,11 +50,12 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'email_notifications' => 'boolean',
         ];
     }
 
-    public function posts()
+    public function jobdesk()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Jobdesk::class);
     }
 }
